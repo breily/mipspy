@@ -4,6 +4,12 @@ MIPSpy - A MIPS Simulator
     * by:  brian reily
     * url: http://brianreily.com/projects/mips_simulator
 
+status
+------
+    * MIPSpy was written a while ago and just moved to github
+      recently for safekeeping.  There may be a few bugs left
+      but it is not being actively developed/maintained.
+
 usage
 -----
     * sample session:
