@@ -1,0 +1,50 @@
+MIPSpy - A MIPS Simulator
+=========================
+
+    * by:  brian reily
+    * url: http://brianreily.com/projects/mips_simulator
+
+usage
+-----
+    * sample session:
+        >>> import simulator
+        >>> # Defaults are verbose=False, mem=1000, pc=0
+        >>> s = simulator.Simulator()
+
+        >>> s.run_line('line of code')
+        >>> s.run_lines( ['line', 'line', 'line'] )
+
+        >>> s.status()                  # show register, data, and pc status
+
+        >>> s.get_register('$t0')       # manually retrieve a register value
+        >>> s.get_register('$8')
+        >>> s.get_register(9)
+
+        >>> s.registers['$v0'] = 4      # manually set a register value
+        >>> s.data[4] = 42              # manually set a data value
+
+        >>> s.rerun()                   # reruns all previous instructions
+        >>> s.instructions              # shows instructions in memory
+
+        >>> s.reset()                   # reset all registers, data, pc
+
+    * to read from a file:
+        >>> s = simulator.Simulator()
+        >>> s.run_lines( open(file, 'r').readlines() )
+
+supported operations
+--------------------
+    syscall, j, b, jr, beq, bne, lw, sw, slt, slti, add, addi,
+    sub, subi, and, andi, or, ori, sll, sllv, srl, srlv, div,
+    mul, xor, xori, move
+
+caveats
+-------
+    * div and mul are three register instructions like add and sub.
+
+    * no memory addresses are assigned; memory is instead implemented
+      as a list - this makes it very easy to test MIPS code but is bad
+      if you need to use it for class.
+
+    * there is no .data section - right now you have to manually input 
+      your .data section using 'Simulator.data[index] = value'
