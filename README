@@ -28,6 +28,14 @@ usage
 
         >>> s.reset()                   # reset all registers, data, pc
 
+    * verbose mode will basically comment your code, as it shows you
+      the starting values of operands, the operation, and then the ending
+      values:
+        >>> s.run_line('addi $t0, $0, 4')
+        0: addi $t0, $0, 4      # $t0 = 0 + 4 = 4
+        >>> s.run_line('addi $t0, $t0, 4')
+        1: addi $t0, $t0, 4     # $t0 = 4 + 4 = 8
+
     * to read from a file:
         >>> s = simulator.Simulator()
         >>> s.run_lines( open(file, 'r').readlines() )
@@ -48,3 +56,7 @@ caveats
 
     * there is no .data section - right now you have to manually input 
       your .data section using 'Simulator.data[index] = value'
+
+issues
+------
+    * verbose mode seems to be a bit buggy, trying to track it down.
